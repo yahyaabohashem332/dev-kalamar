@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dev Kalamar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Readex+Pro:wght@400;600;700&display=swap">
+<style>
+/* One reading column: the Turkish speech, a thin rule, then its Arabic translation. Colours come from the deep sea. */
+:root{--bg:#f4f8fa;--ink:#10262f;--muted:#4f6670;--accent:#0b6a86;--rule:#c9d9df;--f-tr:"Lexend","Segoe UI",system-ui,sans-serif;--f-ar:"Readex Pro","Segoe UI",Tahoma,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.8 var(--f-tr)}
+main{max-width:680px;margin:0 auto;padding:44px 20px 60px;display:grid;gap:40px}
+article{display:grid;gap:16px}
+h1{margin:0 0 4px;color:var(--accent);font-size:clamp(1.9rem,6vw,2.5rem);line-height:1.2;font-weight:700;text-wrap:balance}
+p{margin:0}
+b{font-weight:600;color:var(--accent)}
+.ar{font-family:var(--f-ar);font-size:1.06em;line-height:1.95;border-top:2px solid var(--rule);padding-top:36px}
+.ar h1{font-weight:600}
+@media (max-width:400px){body{font-size:17px}main{padding:32px 16px 48px}}
+</style>
+</head>
+<body>
+<main>
+  <article>
+    <h1>Dev Kalamar</h1>
+    <p>Merhaba öğretmenim ve arkadaşlarım.</p>
+    <p>Bugün size okyanusların derinliklerinde yaşayan ve bilimsel açıdan çok önemli bir deniz canlısını anlatacağım: <b>Dev Kalamar</b>.</p>
+    <p>Dev kalamar, dünyadaki en büyük omurgasız hayvanlardan biridir. Bilim insanlarının araştırmalarına göre boyları 13 metreye ulaşabilir.</p>
+    <p>Biyolojik yapısı çok ilginçtir. Başında 8 adet kol ve avını yakalamak için kullandığı 2 adet çok uzun dokunaç bulunur. Bu kollarda, avını sıkıca tutmasını sağlayan güçlü vantuzlar vardır. Ağız yapısı ise bir papağan gagasına benzer ve çok keskindir.</p>
+    <p>Güneş ışığının hiç ulaşmadığı karanlık sularda yaşadıkları için, bu ortama harika bir adaptasyon sağlamışlardır. Çapı 25 santimetreyi bulan gözleri, hayvanlar alemindeki en büyük gözlerdir ve karanlıkta bile etrafı görmelerini sağlar.</p>
+    <p>Uzun yıllar boyunca sadece bir efsane sanılan bu canlılar, deniz biyolojisindeki teknolojik gelişmeler sayesinde artık daha iyi incelenebiliyor.</p>
+    <p>Beni dinlediğiniz için teşekkür ederim.</p>
+  </article>
+  <article class="ar" lang="ar" dir="rtl">
+    <h1>الحبّار العملاق</h1>
+    <p>مرحباً أستاذي وأصدقائي.</p>
+    <p>سأحدّثكم اليوم عن كائن بحري يعيش في أعماق المحيطات، وله أهمية علمية كبيرة: <b>الحبّار العملاق</b>.</p>
+    <p>الحبّار العملاق من أكبر الحيوانات اللافقارية في العالم. وبحسب أبحاث العلماء، قد يصل طوله إلى 13 متراً.</p>
+    <p>تركيبه البيولوجي مثير للاهتمام جداً. ففي رأسه 8 أذرع، ولامستان طويلتان جداً يستخدمهما لاصطياد فريسته. وفي هذه الأذرع ممصّات قوية تساعده على الإمساك بفريسته بإحكام. أما فمه فيشبه منقار الببغاء، وهو حادّ جداً.</p>
+    <p>ولأن هذه الكائنات تعيش في مياه مظلمة لا يصلها ضوء الشمس أبداً، فقد تكيّفت مع هذه البيئة تكيّفاً رائعاً. فعيونها التي يبلغ قطرها 25 سنتيمتراً هي أكبر العيون في مملكة الحيوان، وهي تمكّنها من رؤية ما حولها حتى في الظلام.</p>
+    <p>ظلّت هذه الكائنات سنوات طويلة تُعدّ مجرد أسطورة، لكن التطورات التكنولوجية في علم الأحياء البحرية جعلت دراستها اليوم أفضل.</p>
+    <p>شكراً لاستماعكم إليّ.</p>
+  </article>
+</main>
+</body>
+</html>
