@@ -2,26 +2,40 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Dev Kalamar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Readex+Pro:wght@400;600;700&display=swap">
 <style>
-/* One reading column: the Turkish speech, a thin rule, then its Arabic translation. Colours come from the deep sea. */
-:root{--bg:#f4f8fa;--ink:#10262f;--muted:#4f6670;--accent:#0b6a86;--rule:#c9d9df;--f-tr:"Lexend","Segoe UI",system-ui,sans-serif;--f-ar:"Readex Pro","Segoe UI",Tahoma,sans-serif;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;color-scheme:dark}
+/* One reading column: the Turkish speech, a thin rule, then its Arabic translation. A stopwatch bar stays at the bottom. */
+:root{--bg:#f4f8fa;--ink:#10262f;--muted:#4f6670;--accent:#0b6a86;--rule:#c9d9df;--bar:rgba(255,255,255,.94);--stop:#b4462b;--on:#fff;--f-tr:"Lexend","Segoe UI",system-ui,sans-serif;--f-ar:"Readex Pro","Segoe UI",Tahoma,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;--bar:rgba(9,32,42,.94);--stop:#f08a6c;--on:#071a22;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#071a22;--ink:#e3eff3;--muted:#9db6c0;--accent:#5cc4de;--rule:#21414d;--bar:rgba(9,32,42,.94);--stop:#f08a6c;--on:#071a22;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.8 var(--f-tr)}
-main{max-width:680px;margin:0 auto;padding:44px 20px 60px;display:grid;gap:40px}
+main{max-width:680px;margin:0 auto;padding:44px 20px 130px;display:grid;gap:40px}
 article{display:grid;gap:16px}
 h1{margin:0 0 4px;color:var(--accent);font-size:clamp(1.9rem,6vw,2.5rem);line-height:1.2;font-weight:700;text-wrap:balance}
 p{margin:0}
 b{font-weight:600;color:var(--accent)}
-.ar{font-family:var(--f-ar);font-size:1.06em;line-height:1.95;border-top:2px solid var(--rule);padding-top:36px}
+[lang="ar"]{font-family:var(--f-ar)}
+.ar{font-size:1.06em;line-height:1.95;border-top:2px solid var(--rule);padding-top:36px}
 .ar h1{font-weight:600}
-@media (max-width:400px){body{font-size:17px}main{padding:32px 16px 48px}}
+
+.timer{position:fixed;left:0;right:0;bottom:0;background:var(--bar);border-top:1px solid var(--rule);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.timer .in{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.clockbox{margin-right:auto;display:grid;line-height:1.1}
+.clockbox small{font-size:12px;color:var(--muted)}
+.clock{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
+.timer.run .clock{color:var(--stop)}
+.timer button{font:600 15px/1.2 var(--f-tr);min-height:44px;padding:9px 16px;border-radius:999px;border:2px solid var(--accent);cursor:pointer;white-space:nowrap}
+#go{background:var(--accent);color:var(--on)}
+.timer.run #go{background:var(--stop);border-color:var(--stop)}
+#reset{background:transparent;color:var(--accent)}
+.timer button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+@media (max-width:400px){body{font-size:17px}main{padding:32px 16px 130px}.clock{font-size:1.7rem}.timer button{padding:9px 12px;font-size:14px}}
+@media print{.timer{display:none}main{padding-bottom:0}}
 </style>
 </head>
 <body>
@@ -32,8 +46,8 @@ b{font-weight:600;color:var(--accent)}
     <p>Bugün size okyanus derinliklerinde yaşayan, bilimsel açıdan çok önemli bir canlıyı anlatacağım: <b>Dev Kalamar</b>.</p>
     <p>Bu canlı, dünyadaki en büyük omurgasızlardan biridir ve boyu 13 metreye ulaşabilir.</p>
     <p>Biyolojik yapısı çok ilginçtir. Güçlü vantuzlara sahip 8 kolu, avlanmak için 2 uzun dokunacı ve papağan gagasına benzeyen keskin bir ağzı vardır.</p>
-    <p>Karanlık sulara harika bir adaptasyon sağlamışlardır. Hayvanlar alemindeki en büyük gözlere sahip olmaları, zifiri karanlıkta bile görmelerini sağlar.</p>
-    <p>Eskiden sadece efsane sanılan bu canlılar, deniz biyolojisinin gelişmesiyle artık incelenebiliyor.</p>
+    <p>Karanlık sulara harika bir adaptasyon sağlamışlardır. Hayvanlar alemindeki en büyük gözlere sahip olmaları, zifiri karanlıkta bile görmelerini sağlar. Genellikle yüzeyden yaklaşık 1000 metre derinlikte yaşar ve balıklarla beslenirler.</p>
+    <p>Eskiden sadece bir efsane sanılan bu gizemli canlılar, ilk kez 2012 yılında canlı olarak görüntülenebilmiştir.</p>
     <p>Beni dinlediğiniz için teşekkür ederim.</p>
   </article>
   <article class="ar" lang="ar" dir="rtl">
@@ -42,10 +56,46 @@ b{font-weight:600;color:var(--accent)}
     <p>سأحدّثكم اليوم عن كائن يعيش في أعماق المحيطات، وهو مهمّ جداً من الناحية العلمية: <b>الحبّار العملاق</b>.</p>
     <p>هذا الكائن من أكبر اللافقاريات في العالم، وقد يصل طوله إلى 13 متراً.</p>
     <p>تركيبه البيولوجي مثير جداً للاهتمام. فله 8 أذرع فيها ممصّات قوية، ولامستان طويلتان للصيد، وفم حادّ يشبه منقار الببغاء.</p>
-    <p>لقد تكيّفت هذه الكائنات تكيّفاً رائعاً مع المياه المظلمة. فامتلاكها أكبر العيون في مملكة الحيوان يمكّنها من الرؤية حتى في الظلام الدامس.</p>
-    <p>هذه الكائنات التي كانت تُعدّ في الماضي مجرد أسطورة، أصبح من الممكن الآن دراستها بفضل تطوّر علم الأحياء البحرية.</p>
+    <p>لقد تكيّفت هذه الكائنات تكيّفاً رائعاً مع المياه المظلمة. فامتلاكها أكبر العيون في مملكة الحيوان يمكّنها من الرؤية حتى في الظلام الدامس. وهي تعيش عادةً على عمق 1000 متر تقريباً تحت سطح البحر، وتتغذّى على الأسماك.</p>
+    <p>هذه الكائنات الغامضة كانت تُعدّ في الماضي مجرد أسطورة، وقد صُوِّرت حيّةً لأول مرة عام 2012.</p>
     <p>شكراً لاستماعكم إليّ.</p>
   </article>
 </main>
+
+<div class="timer" role="group" aria-label="Süre ölçer">
+  <div class="in">
+    <div class="clockbox">
+      <small>Süre · <span lang="ar" dir="rtl">المدة</span></small>
+      <span class="clock" id="clock" role="timer">0:00</span>
+    </div>
+    <button type="button" id="go"><span>Başla</span> · <span lang="ar" dir="rtl">ابدأ</span></button>
+    <button type="button" id="reset"><span>Sıfırla</span> · <span lang="ar" dir="rtl">صفّر</span></button>
+  </div>
+</div>
+
+<script>
+/* Stopwatch: start, pause/continue, reset. Time comes from performance.now(), so it stays right even if the screen sleeps. */
+const bar = document.querySelector('.timer'), clock = document.getElementById('clock');
+const go = document.getElementById('go'), reset = document.getElementById('reset');
+let acc = 0, start = 0, tick = 0, lock = null;
+
+const elapsed = () => acc + (start ? performance.now() - start : 0);
+const show = () => {
+  const s = Math.floor(elapsed() / 1000);
+  clock.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+};
+const label = (tr, ar) => { go.innerHTML = `<span>${tr}</span> · <span lang="ar" dir="rtl">${ar}</span>`; };
+const awake = async on => {
+  try { if (on) lock = await navigator.wakeLock?.request('screen'); else { await lock?.release(); lock = null; } } catch (e) {}
+};
+const pause = () => { acc = elapsed(); start = 0; clearInterval(tick); bar.classList.remove('run'); awake(false); };
+
+go.addEventListener('click', () => {
+  if (start) { pause(); label('Devam', 'تابع'); }
+  else { start = performance.now(); tick = setInterval(show, 200); bar.classList.add('run'); label('Durdur', 'أوقف'); awake(true); }
+  show();
+});
+reset.addEventListener('click', () => { pause(); acc = 0; label('Başla', 'ابدأ'); show(); });
+</script>
 </body>
 </html>
